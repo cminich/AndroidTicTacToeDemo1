@@ -194,6 +194,15 @@ public class MainActivity extends AppCompatActivity
             paint.setColor(Color.BLUE);
             paint.setStyle(Paint.Style.STROKE);
 
+            int screenWidth = getWidth();      // width of the View object but can be thought of as the canvas width
+            int screenHeight = getHeight();    // canvas height (TODO: figure out how to account for height of action bar)
+
+            Paint greenPen = new Paint();           // green "pen" that does not fill
+            greenPen.setColor(Color.GREEN);
+            greenPen.setStyle(Paint.Style.STROKE);  // creating a "pen" that does not fill in regions
+            greenPen.setStrokeWidth(10);            // width of the pen's stroke
+            //greenPen.setAntiAlias(true);			// smooth edges
+
             // draw tic tac toe board
 
             // vertical lines
@@ -232,6 +241,23 @@ public class MainActivity extends AppCompatActivity
             {
                 canvas.drawText("X Wins", 10, 10, paint);
             }
+
+
+
+            // draw a tic tac toe board
+
+            TicTacToeBoard myBoard = new TicTacToeBoard(0, 0, screenWidth / 3);
+
+            myBoard.drawBoard(canvas, greenPen);
+
+            myBoard.placeLetter(canvas, greenPen, 'x', 0, 0);
+            myBoard.placeLetter(canvas, greenPen, 'o', 0, 1);
+
+
+
+
+
+
 
         }
 
